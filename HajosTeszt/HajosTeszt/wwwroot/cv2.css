@@ -1,0 +1,59 @@
+﻿body {
+    background-color:dimgrey;
+    text-align:center;
+}
+* {
+    box-sizing: border-box;
+}
+#header{
+    background-color:whitesmoke;
+    padding:20px;
+    margin:10px;
+}
+#bemu {
+    background-color: lightgray;
+    padding: 20px;
+    margin: 10px;
+    text-align:left;
+}
+#rovid {
+    background-color: whitesmoke;
+    padding: 20px;
+    margin: 10px;
+}
+#listfelir {
+    display:flex;
+}
+#listfelir p {
+    padding: 20px;
+    margin: 10px;
+    flex: 1 1 auto;
+    }
+#list {
+    background-color: lightgray;
+    padding: 20px;
+    margin: 10px;
+    display:flex;
+    text-align:left;
+}
+#list ol, ul{
+    flex: 1 1 auto;
+}
+@media screen and (min-width: 800px) {
+    body {
+        flex-direction: column;
+        max-width: 1500px;
+        margin: auto;
+    }
+
+    #main {
+        display: flex;
+        flex-direction:row;
+    }
+    #header{
+        flex: 1 1 auto;
+    }
+    #bemu {
+        flex: 1 1 auto;
+    }
+}
