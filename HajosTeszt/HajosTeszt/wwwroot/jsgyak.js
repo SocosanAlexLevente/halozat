@@ -23,7 +23,6 @@ window.onload = () => {
             else {
                 oszlop.innerText = faktoriális(i) / (faktoriális(j) * faktoriális(i - j));
                 oszlop.style.background = `rgb(150,100,${120 + faktoriális(i) / (faktoriális(j) * faktoriális(i - j))}`;
-
             }
         }
     }
