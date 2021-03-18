@@ -72,6 +72,7 @@ div {
     #középső {
         flex-direction:column;
     }
+
     #válaszok {
         order:1;
     }
