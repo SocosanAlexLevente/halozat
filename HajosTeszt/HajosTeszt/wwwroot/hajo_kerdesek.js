@@ -1,37 +1,26 @@
-﻿var kérdések;
-var aktual = 1;
-var helyes;
-var irany;
-//function letöltés() {
-//    fetch('/questions.json')
-//        .then(response => response.json())
-//        .then(data => letöltésBefejeződött(data));
-//}
-function letöltés() {
-    fetch('/questions/all')
+﻿var aktual = 1;
+
+function kérdésletöltés() {
+    fetch(`/questions/${aktual}`)
         .then(response => response.json())
-        .then(data => letöltésBefejeződött(data)
+        .then(data => kérdésmegjelenités(data)
         );
 }
-function letöltésBefejeződött(d) {
-    console.log("Sikeres letöltés")
-    console.log(d)
-    kérdések = d
-    kérdésMegjelenítés(aktual);
-}
-function kérdésMegjelenítés(kérdés) {
-    //console.log(kérdések[kérdés].questionText);
+function kérdésmegjelenités(kérdés) {
+    console.log(kérdés)
     var kerdes = document.getElementById("kérdés_szöveg")
     var valasz1 = document.getElementById("válasz1")
     var valasz2 = document.getElementById("válasz2")
     var valasz3 = document.getElementById("válasz3")
-    kerdes.innerText = kérdések[kérdés].questionText
-    valasz1.innerText = kérdések[kérdés].answer1
-    valasz2.innerText = kérdések[kérdés].answer2
-    valasz3.innerText = kérdések[kérdés].answer3
-    helyes = kérdések[kérdés].correctAnswer
+    kerdes.innerText = kérdés.questionText
+    valasz1.innerText = kérdés.answer1
+    valasz2.innerText = kérdés.answer2
+    valasz3.innerText = kérdés.answer3
+    helyes = kérdés.correctAnswer
     var kep = document.getElementById("kép1")
-    kep.src = "https://szoft1.comeback.hu/hajo/" + kérdés.image
+    if (kérdés.image != "") {
+        kep.src = "https://szoft1.comeback.hu/hajo/" + kérdés.image
+    }
 }
 function ellenörzés(id) {
     if (id[6] == helyes) {
@@ -45,7 +34,7 @@ function ellenörzés(id) {
 function következő() {
     if (aktual < 2) {
         aktual++
-        kérdésMegjelenítés(aktual)
+        kérdésletöltés(aktual)
     }
     var valasz1 = document.getElementById("válasz1")
     valasz1.style.backgroundColor = "lightgray"
@@ -53,12 +42,12 @@ function következő() {
     valasz2.style.backgroundColor = "lightgray"
     var valasz3 = document.getElementById("válasz3")
     valasz3.style.backgroundColor = "lightgray"
-    console.log(aktual)
+    //console.log(aktual)
 }
 function vissza() {
     if (aktual > 0) {
         aktual--
-        kérdésMegjelenítés(aktual)
+        kérdésletöltés(aktual)
     }
     var valasz1 = document.getElementById("válasz1")
     valasz1.style.backgroundColor = "lightgray"
@@ -66,6 +55,6 @@ function vissza() {
     valasz2.style.backgroundColor = "lightgray"
     var valasz3 = document.getElementById("válasz3")
     valasz3.style.backgroundColor = "lightgray"
-    console.log(aktual)
+    //console.log(aktual)
 }
-window.onload = letöltés();
+window.onload = kérdésletöltés();
