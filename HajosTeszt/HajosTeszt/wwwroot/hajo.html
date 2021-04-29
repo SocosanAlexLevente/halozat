@@ -1,11 +1,10 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <!--<script src="hetedik.js"></script>-->
-    <script src="hajo_kerdesek.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="utf-8" />
     <link rel="stylesheet" href="hajo.css">
+    <script src="hajo_kerdesek.js"></script>
     <title></title>
 </head>
 <body>
@@ -16,17 +15,17 @@
 
         <div id="középső">
             <div id="válaszok">
-                <div id="válasz1" class="kerdes kattintható" onClick="ellenörzés(this.id)">Válasz 1</div>
-                <div id="válasz2" class="kerdes kattintható jó" onClick="ellenörzés(this.id)">Válasz 2</div>
-                <div id="válasz3" class="kerdes kattintható rossz" onClick="ellenörzés(this.id)">Válasz 3</div>
+                <div id="válasz1" onclick="választás(1)" class="kerdes kattintható">Válasz 1</div>
+                <div id="válasz2" onclick="választás(2)" class="kerdes kattintható jó">Válasz 2</div>
+                <div id="válasz3" onclick="választás(3)" class="kerdes kattintható rossz">Válasz 3</div>
             </div>
             <div id="kép">
                 <img id="kép1"/>
             </div>
         </div>
         <div id="vezérlő">
-            <div class="gomb kattintható" onclick="vissza()">Vissza</div>
-            <div class="gomb kattintható" onclick="következő()">Előre</div>
+            <div id="vissza_gomb" class="gomb kattintható">Vissza</div>
+            <div id="előre_gomb" class="gomb kattintható">Előre</div>
         </div>
     </div>
 </body>
