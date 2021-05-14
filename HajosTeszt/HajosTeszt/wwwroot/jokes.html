@@ -5,6 +5,8 @@
     <title></title>
 </head>
 <body>
+    <script>
+    </script>
     <form>
         <div id="jokeList"></div>
         <div>
@@ -12,6 +14,9 @@
         </div>
         <button id="addButton">Új vicc felvétele</button>
     </form>
+    <div id="lista">
+
+    </div>
     <script>
         document.getElementById("addButton").addEventListener("click", () => {
 
@@ -20,7 +25,7 @@
                 jokeText: document.getElementById("jokeText").value
             }
             //Átküldés
-            fetch("api/jokes",
+            fetch("api/jokes2",
                 {
                     method: 'POST',
                     headers: {
@@ -30,16 +35,33 @@
                 }).then(x => {
                     if (x.ok) {
                         alert("Siker");
-
                     }
                     else {
                         alert("Kudarc");
                     }
-                });
+                })
+        });
+        window.onload = function exampleFunction() {
+            fetch("api/jokes2").then(x => {
+                if (x.ok) {
+                    alert("Siker");
+                    return x.json()
+                }
+                else {
+                    alert("Kudarc");
+                }
+            }).then(data => megjelenites(data))
         }
-            function Lista() {
-
+        function megjelenites(data) {
+            //console.log(data)
+            for (i = 0; i < data.length; i++) {
+                //console.log(data[i].jokeText)
+                var vicc = document.createElement("div");
+                var eh = document.getElementById("lista");
+                vicc.innerText = data[i].jokeText;
+                eh.appendChild(vicc);
             }
+        }
     </script>
 </body>
 </html>
